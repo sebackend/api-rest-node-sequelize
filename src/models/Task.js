@@ -1,7 +1,7 @@
-import { DataTypes } from "sequelize";
-import { sequelize } from "../database/database.js";
+import { DataTypes } from 'sequelize'
+import { sequelize } from '../database/database.js'
 
-export const Task = sequelize.define("tasks", {
+export const Task = sequelize.define('tasks', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -14,4 +14,4 @@ export const Task = sequelize.define("tasks", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
-});
+})
