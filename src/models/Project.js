@@ -12,7 +12,7 @@ export const Project = sequelize.define('projects', {
     type: DataTypes.STRING,
   },
   priority: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
   },
   description: {
     type: DataTypes.STRING,
