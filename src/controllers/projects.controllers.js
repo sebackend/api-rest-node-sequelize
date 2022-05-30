@@ -11,6 +11,21 @@ export const getProjects = async (req, res) => {
   }
 }
 
+export const getProject = async (req, res) => {
+  try {
+    const { id } = req.params
+    const project = await Project.findByPk(id)
+
+    if (!project) return res.sendStatus(404)
+
+    res.json(project)
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    })
+  }
+}
+
 export const createProject = async (req, res) => {
   try {
     const { name, priority, description } = req.body
