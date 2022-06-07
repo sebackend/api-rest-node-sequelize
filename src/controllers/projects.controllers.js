@@ -36,8 +36,6 @@ export const createProject = async (req, res) => {
       description,
     })
 
-    console.log(project)
-
     res.json(project)
   } catch (error) {
     return res.status(500).json({
