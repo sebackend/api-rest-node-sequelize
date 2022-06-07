@@ -44,15 +44,11 @@ export const createTask = async (req, res) => {
 export const updateTask = async (req, res) => {
   try {
     const { id } = req.params
-    const { name, done, projectId } = req.body
 
     const task = await Task.findByPk(id)
 
-    await task.update({
-      name,
-      done,
-      projectId,
-    })
+    await task.set(req.body)
+    task.save()
 
     res.json(task)
   } catch (error) {
