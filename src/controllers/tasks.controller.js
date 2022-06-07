@@ -11,11 +11,44 @@ export const getTasks = async (req, res) => {
   }
 }
 
+export const getTask = async (req, res) => {
+  try {
+    const { id } = req.params
+    const task = await Task.findByPk(id)
+    res.json(task)
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    })
+  }
+}
+
 export const createTask = async (req, res) => {
   try {
     const { name, done, projectId } = req.body
 
     const task = await Task.create({
+      name,
+      done,
+      projectId,
+    })
+
+    res.json(task)
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    })
+  }
+}
+
+export const updateTask = async (req, res) => {
+  try {
+    const { id } = req.params
+    const { name, done, projectId } = req.body
+
+    const task = await Task.findByPk(id)
+
+    await task.update({
       name,
       done,
       projectId,
