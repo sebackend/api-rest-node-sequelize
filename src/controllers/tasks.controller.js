@@ -61,3 +61,19 @@ export const updateTask = async (req, res) => {
     })
   }
 }
+
+export const deleteTask = async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const destroyed = await Task.destroy({
+      where: {
+        id,
+      },
+    })
+
+    res.sendStatus(204)
+  } catch (error) {
+    res.sendStatus(500).json({ message: error.message })
+  }
+}

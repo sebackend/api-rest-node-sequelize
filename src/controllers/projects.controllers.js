@@ -76,6 +76,6 @@ export const deleteProject = async (req, res) => {
 
     res.sendStatus(204)
   } catch (error) {
-    res.sendStatus(500).json({ error: error.message })
+    res.sendStatus(500).json({ message: error.message })
   }
 }
